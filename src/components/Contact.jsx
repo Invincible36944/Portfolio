@@ -6,11 +6,9 @@ import { styles }  from '../styles'
 import { EarthCanvas } from './canvas'
 import { SectionWrapper } from '../hoc'
 import { slideIn } from '../utils/motion'
-require ('dotenv').config();
 
-//template_7ib6uj4
-//gaganku2081ku@gmail.com
-//SEiDPLiUOrWbYok_X  public key
+
+
 const Contact = () => {
 
   const formRef = useRef();
@@ -34,16 +32,16 @@ const Contact = () => {
 
 
     emailjs.send(
-    process.env.EMAIL,
-    process.env.TEMPLATE,
+    import.meta.env.VITE_EMAIL,
+    import.meta.env.VITE_TEMPLATE,
     {
       from_name: form.name,
       to_name: 'Invincible',
       from_email: form.email,
-      to_email:  process.env.EMAIL,
+      to_email:  import.meta.env.VITE_EMAIL,
       message: form.message,
     } ,
-    PUBLIC_KEY
+    import.meta.env.VITE_PUBLIC_KEY
     )
     .then(() => {
       setLoading(false);
